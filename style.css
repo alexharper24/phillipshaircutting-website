@@ -5,6 +5,8 @@
    ========================================================================= */
 
 :root{
+  /* iOS Safari inverts pages that do not declare a scheme. */
+  color-scheme: light only !important;
   --red:#b0392c; --red-deep:#8c2a20; --red-soft:#e9d0ca;
   --navy:#182a44; --navy-deep:#0f1d31; --navy-soft:#33456180;
   --cream:#f6eeda; --cream-2:#efe3c6; --cream-line:#e3d6b6;
