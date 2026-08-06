@@ -34,6 +34,13 @@ img{max-width:100%; display:block}
 a{color:inherit; text-decoration:none}
 h1,h2,h3,h4{font-family:var(--display); font-weight:600; line-height:1.05; margin:0; letter-spacing:.01em}
 
+/* Light-mode lock: iOS Safari (and some Android browsers) will auto-invert a
+   page under a dark OS theme into unreadable dark-on-dark. Re-assert the light
+   palette. Paired with the two color-scheme metas in each page's <head>. */
+@media (prefers-color-scheme: dark){
+  html, body{ background:var(--cream) !important; color:var(--ink) !important; }
+}
+
 .wrap{width:min(92%,var(--maxw)); margin-inline:auto}
 .section{padding:5.5rem 0}
 .section-tight{padding:3.5rem 0}
@@ -94,7 +101,10 @@ h1,h2,h3,h4{font-family:var(--display); font-weight:600; line-height:1.05; margi
 .nav-links a:not(.nav-cta)::after{content:""; position:absolute; left:0; right:100%; bottom:-2px; height:2px; background:var(--gold); transition:right .25s ease}
 @media(hover:hover){ .nav-links a:not(.nav-cta):hover::after{right:0} }
 .nav-links a.active:not(.nav-cta)::after{right:0}
-.nav-links .nav-cta{color:var(--white)}
+/* nav CTA is a .btn pill inside .nav-links, whose `padding:.35rem 0` (higher
+   specificity than .btn) would zero the horizontal padding and let the rounded
+   border touch the text. Restore proper pill padding here. */
+.nav-links .nav-cta{color:var(--white); padding:.6rem 1.45rem}
 .nav-toggle{display:none; background:none; border:0; cursor:pointer; padding:8px; width:44px; height:44px}
 .nav-toggle span{display:block; width:26px; height:2.5px; background:var(--cream); margin:5px auto; transition:transform .3s, opacity .3s}
 
